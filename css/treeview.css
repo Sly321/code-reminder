@@ -1,0 +1,41 @@
+body {
+	font-family: calibri, arial, monospace;
+}
+
+#selectable > li {
+	list-style-type: none;
+	background: none;
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+	margin-top: 15px;
+}
+
+#selectable > li > span {
+	padding: 5px;
+	color: #c7c7c7;
+	border: 1px #ccc solid;
+	background: #fff;
+}
+
+#selectable > li > span:nth-child(1) {
+	margin-right: 3px;
+	width: 150px;
+	border-bottom-left-radius: 5px;
+	border-top-left-radius: 5px;
+}
+
+#selectable > li > span:nth-child(2) {
+	border-bottom-right-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+#selectable > li > span:nth-child(1):hover {
+	background: #1c1c1c;
+	cursor: pointer;
+}
+
+#selectable > li > span:nth-child(2):hover {
+	background: #1c1c1c;
+	cursor: pointer;
+}
