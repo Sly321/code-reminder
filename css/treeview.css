@@ -1,16 +1,20 @@
-body {
-	font-family: calibri, arial, monospace;
+#selectable {
+	padding-left: 0px;
+	margin: 0;
 }
 
+/* List element of the treeview */
 #selectable > li {
 	list-style-type: none;
 	background: none;
 	padding: 0px;
 	margin: 0px;
 	border: 0px;
-	margin-top: 15px;
+	margin-top: 3px;
+	display: flex;
 }
 
+/* All spans in listing elements */
 #selectable > li > span {
 	padding: 5px;
 	color: #c7c7c7;
@@ -18,24 +22,36 @@ body {
 	background: #fff;
 }
 
+/* First span after a list element (the naming span) */
 #selectable > li > span:nth-child(1) {
 	margin-right: 3px;
-	width: 150px;
 	border-bottom-left-radius: 5px;
 	border-top-left-radius: 5px;
+	flex-grow: 1;
 }
 
+/* Second span after a list element (the arrow span) */
 #selectable > li > span:nth-child(2) {
 	border-bottom-right-radius: 5px;
 	border-top-right-radius: 5px;
 }
 
+/* First span after a list element:hover (the naming span) */
 #selectable > li > span:nth-child(1):hover {
-	background: #1c1c1c;
+	border: 1px #1c1c1c solid;
 	cursor: pointer;
 }
 
+/* Second span after a list element:hover (the arrow span) */
 #selectable > li > span:nth-child(2):hover {
-	background: #1c1c1c;
+	border: 1px #1c1c1c solid;
 	cursor: pointer;
+}
+
+#selectable > .ui-selecting > span {
+	border: 1px blue solid;
+}
+
+#selectable > .ui-selected > span:nth-child(2) {
+	background-color: #1c1c1c;
 }
