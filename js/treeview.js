@@ -1,3 +1,18 @@
+var cplusplus = [
+  {
+    'name': "for",
+    'snippet': "abcdefg"
+  }
+];
+
+var languageTree = [
+  {
+    //'name': 'c++',
+    //'language': 'cplusplus',
+    //'children': cplusplus
+  }
+];
+
 $(function()
 {
   $( ".objects-elements" ).accordion();
@@ -15,33 +30,19 @@ $(function()
   });
 });
 
-var tree = [];
-
 function saveTree() {
-  if(!tree) {
+  if(!languageTree) {
     message("Error");
     return;
   }
-  chrome.storage.local.set({'tree': tree}, function() {
-    console.log("Tree is saved.");
+  chrome.storage.sync.set({'languageTree': languageTree}, function() {
+    console.log("Treeview is saved.");
   });
 }
 
-chrome.storage.onChanged.addListener(function(changes, namespace) {
-  for (key in changes) {
-    var storageChange = changes[key];
-    console.log('Storage key "%s" in namespace "%s" changed. ' +
-                'Old value was "%s", new value is "%s".',
-                key,
-                namespace,
-                storageChange.oldValue,
-                storageChange.newValue);
-  }
-});
-
 var addToTree = function(object)
 {
-  tree.push(object);
+  languageTree.push(object);
 }
 
 var addToTreeBtn = function()
@@ -60,7 +61,7 @@ var addToTreeBtn = function()
   }
   else
   {
-    for(var key of tree) {
+    for(var key of languageTree) {
       if(key == text)
       {
         $("#addingText").val("");
@@ -70,7 +71,7 @@ var addToTreeBtn = function()
     }
     $("#addingText").val("");
     clearTree();
-    addToTree([text]);
+    addToTree({ 'name': text });
     drawTree();
     $("#errorText").html("");
     saveTree();
@@ -81,16 +82,16 @@ var removeFromTree = function(object)
 {
   console.log("Deleting " + object[0]);
   var rem = -1;
-  for(var i= 0; i < tree.length; i++)
+  for(var i= 0; i < languageTree.length; i++)
   {
-    if(tree[i][0] == object[0])
+    if(languageTree[i].name == object)
     {
       rem = i;
     }
   }
   if(rem >= 0)
   {
-    tree.splice(rem, 1);
+    languageTree.splice(rem, 1);
   }
   else {
     console.log("Nothing there " + rem);
@@ -102,7 +103,7 @@ var removeFromTreeBtn = function()
 {
   var sel = $('.ui-selected > .name')[0].textContent;
   console.log("Deleting " + sel);
-  removeFromTree([sel]);
+  removeFromTree(sel);
   clearTree();
   drawTree();
   saveTree();
@@ -111,9 +112,21 @@ var removeFromTreeBtn = function()
 var drawTree = function()
 {
   var ol = $("#selectable");
-  for (var splice of tree) {
-    ol.append("<li class='ui-widget-content'><span class='name'>" + splice + "</span><span>&gt;</span></li>");
+  var li = "";
+  for (var splice of languageTree)
+  {
+    li += "<li class='ui-widget-content'><span class='name'>" + splice.name + "</span>";
+    if(splice.children != undefined)
+    {
+      li += "<button class='openChildren'>&gt;</button>";
+    }
+    else
+    {
+      li += "<button class='addChildren'>+</button>";
+    }
+    li += "</li>";
   }
+  ol.append(li);
 }
 
 var clearTree = function()
@@ -122,11 +135,18 @@ var clearTree = function()
   ol.html("");
 }
 
+/* Problem with initial start - Object will be undefined and extension crashes. */
 function loadTree() {
-    chrome.storage.local.get('tree', function (result) {
-        tree = result.tree;
+    chrome.storage.sync.get('languageTree', function (result) {
+      if(result.languageTree != undefined)
+      {
+        languageTree = result.languageTree;
+      }
+      else
+      {
+        console.log("INFO: Can't load from Sync because there is no Date (initial opening)");
+      }
     });
 }
 
 loadTree();
-drawTree();

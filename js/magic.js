@@ -1,4 +1,4 @@
-setTimeout(function(){ drawTree() }, 100);
+setTimeout(function(){ drawTree() }, 200);
 $( "#addBtn" ).click(function() { addToTreeBtn() });
 $( "#removeBtn" ).click(function() {removeFromTreeBtn();})
 $('#addingText').keyup(function(e){
@@ -7,4 +7,8 @@ $('#addingText').keyup(function(e){
     {
         addToTreeBtn();
     }
+});
+
+$('.addChildren').click(function() {
+  console.log("AJOAJSCNUEC ");
 });

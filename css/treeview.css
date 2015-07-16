@@ -15,7 +15,7 @@
 }
 
 /* All spans in listing elements */
-#selectable > li > span, #addingText, #addBtn, #removeBtn {
+#selectable > li > span, #addingText, #addBtn, #removeBtn, #editBtn, button {
 	padding: 5px;
 	color: #c7c7c7;
 	border: 1px #ccc solid;
@@ -31,35 +31,40 @@
 }
 
 /* Second span after a list element (the arrow span) */
-#selectable > li > span:nth-child(2), #addBtn {
+#selectable > li > button:nth-child(2), #addBtn {
 	border-bottom-right-radius: 5px;
 	border-top-right-radius: 5px;
 }
 
 /* First span after a list element:hover (the naming span) */
 #selectable > li > span:nth-child(1):hover {
-	border: 1px #1c1c1c solid;
+	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  border: 1px solid rgba(81, 203, 238, 1);
 	cursor: pointer;
 }
 
 /* Second span after a list element:hover (the arrow span) */
-#selectable > li > span:nth-child(2):hover {
-	border: 1px #1c1c1c solid;
+#selectable > li > button:nth-child(2):hover {
+	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  border: 1px solid rgba(81, 203, 238, 1);
 	cursor: pointer;
 }
 
 #selectable > .ui-selecting > span {
-	border: 1px blue solid;
+	box-shadow: 0 0 5px rgba(230, 203, 238, 1);
+  border: 1px solid rgba(81, 203, 238, 1);
 }
 
-#selectable > .ui-selected > span:nth-child(2) {
-	background-color: #1c1c1c;
+#selectable > .ui-selected > span {
+	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  border: 1px solid rgba(81, 203, 238, 1);
 }
 
-#addingText, #addBtn, #removeBtn {
+#addingText, #addBtn, #removeBtn, #editBtn {
 	margin-top: 3px;
 }
 
-#removeBtn {
+#removeBtn, #editBtn {
 	border-radius: 5px;
+	margin-right: 3px;
 }
