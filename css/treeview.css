@@ -15,7 +15,7 @@
 }
 
 /* All spans in listing elements */
-#selectable > li > span {
+#selectable > li > span, #addingText, #addBtn, #removeBtn {
 	padding: 5px;
 	color: #c7c7c7;
 	border: 1px #ccc solid;
@@ -23,7 +23,7 @@
 }
 
 /* First span after a list element (the naming span) */
-#selectable > li > span:nth-child(1) {
+#selectable > li > span:nth-child(1), #addingText {
 	margin-right: 3px;
 	border-bottom-left-radius: 5px;
 	border-top-left-radius: 5px;
@@ -31,7 +31,7 @@
 }
 
 /* Second span after a list element (the arrow span) */
-#selectable > li > span:nth-child(2) {
+#selectable > li > span:nth-child(2), #addBtn {
 	border-bottom-right-radius: 5px;
 	border-top-right-radius: 5px;
 }
@@ -54,4 +54,12 @@
 
 #selectable > .ui-selected > span:nth-child(2) {
 	background-color: #1c1c1c;
+}
+
+#addingText, #addBtn, #removeBtn {
+	margin-top: 3px;
+}
+
+#removeBtn {
+	border-radius: 5px;
 }
