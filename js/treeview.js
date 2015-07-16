@@ -6,11 +6,6 @@ var cplusplus = [
 ];
 
 var languageTree = [
-  {
-    //'name': 'c++',
-    //'language': 'cplusplus',
-    //'children': cplusplus
-  }
 ];
 
 $(function()
