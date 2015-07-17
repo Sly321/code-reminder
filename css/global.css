@@ -4,3 +4,67 @@ body {
 	min-width: 300px;
 	min-height: 500px;
 }
+
+.std-ui {
+  padding: 5px;
+	color: #c7c7c7;
+	border: 1px #ccc solid;
+	background: #fff;
+}
+
+.marle {
+	margin-left: 3px;
+}
+
+.marri {
+	margin-right : 3px;
+}
+
+.rounded {
+	border-bottom-left-radius: 5px;
+	border-top-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.lrounded {
+	border-bottom-left-radius: 5px;
+	border-top-left-radius: 5px;
+}
+
+.rrounded {
+	border-bottom-right-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+#editor {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+		min-height: 400px;
+}
+
+#aceModal > .modal-dialog > .modal-content > .modal-body {
+	min-height: 400px;
+}
+
+#aceModal > .modal-dialog > .modal-content > .modal-footer {
+	padding: 5px;
+	background-color: #2F3129;
+}
+
+#aceSaveBtn {
+	margin-right: 3px;
+}
+
+#aceSaveBtn:hover {
+	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  border: 1px solid rgba(81, 203, 238, 1);
+}
+
+#aceCancelBtn:hover {
+	box-shadow: 0 0 5px rgba(238, 81, 100, 1);
+  border: 1px solid rgba(238, 81, 100, 1);
+}

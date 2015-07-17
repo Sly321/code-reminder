@@ -1,0 +1,22 @@
+#backBtn {
+  margin-top: 3px;
+}
+
+#addSubBtn:hover  {
+	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  border: 1px solid rgba(81, 203, 238, 1);
+}
+
+#backBtn:hover {
+  box-shadow: 0 0 5px rgba(81, 97, 238, 1);
+  border: 1px solid rgba(81, 97, 238, 1);
+}
+
+#removeSubBtn:hover {
+  box-shadow: 0 0 5px rgba(238, 81, 100, 1);
+  border: 1px solid rgba(238, 81, 100, 1);
+}
+
+.snippetInput {
+  margin-top: 3px;
+}

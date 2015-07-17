@@ -1,10 +1,3 @@
-var cplusplus = [
-  {
-    'name': "for",
-    'snippet': "abcdefg"
-  }
-];
-
 var languageTree = [
 ];
 
@@ -57,7 +50,7 @@ var addToTreeBtn = function()
   else
   {
     for(var key of languageTree) {
-      if(key == text)
+      if(key.name == text)
       {
         $("#addingText").val("");
         $("#errorText").html("Already exists");
@@ -91,7 +84,6 @@ var removeFromTree = function(object)
   else {
     console.log("Nothing there " + rem);
   }
-
 }
 
 var removeFromTreeBtn = function()
@@ -104,16 +96,40 @@ var removeFromTreeBtn = function()
   saveTree();
 }
 
+var removeSubFromTree = function(name)
+{
+  var parent = $('#header').html();
+  var parent_id = getIdByName(parent);
+  for(var i = 0; i < languageTree[parent_id].children.length; i++)
+  {
+    if(name == languageTree[parent_id].children[i].name)
+    {
+      languageTree[parent_id].children.splice(i, 1);
+    }
+  }
+  clearTree();
+  drawChildrenOf(parent_id);
+  saveTree();
+}
+
 var drawChildrenOf = function(id)
 {
   var ol = $("#selectable");
   var li = "";
-  for (var splice of languageTree[id].children)
+  if(languageTree[id].children == undefined)
   {
-    li += "<li class='ui-widget-content'>";
-    li += "<button class='snippet name rounded'>" + splice.name + "</button>";
-    li += "</li>";
+    // draw no children if have no children
   }
+  else
+  {
+    for (var splice of languageTree[id].children)
+    {
+      li += "<li class='ui-widget-content'>";
+      li += "<button class='snippet name rounded'>" + splice.name + "</button>";
+      li += "</li>";
+    }
+  }
+
   $('.rootInput').hide();
   $('.snippetInput').show();
   $('#header').html(languageTree[id].name);
@@ -128,14 +144,7 @@ var drawTree = function()
   for (var splice of languageTree)
   {
     li += "<li class='ui-widget-content'><span class='name'>" + splice.name + "</span>";
-    if(splice.children != undefined)
-    {
-      li += "<button class='openChildren'>&gt;</button>";
-    }
-    else
-    {
-      li += "<button class='addChild'>+</button>";
-    }
+    li += "<button class='openChildren'>&gt;</button>";
     li += "</li>";
   }
   $('.rootInput').show();
@@ -145,9 +154,10 @@ var drawTree = function()
   addEvents();
 }
 
-var addSubTreeTo = function(toObj)
+var addSubToTree = function(toObj)
 {
   var node = $("#addingSubNode").val();
+  console.log("node "+ node);
   var object = { 'name': node, 'snippet': "" };
   for(var i= 0; i < languageTree.length; i++)
   {
@@ -155,14 +165,44 @@ var addSubTreeTo = function(toObj)
     {
       if(languageTree[i].children != undefined)
       {
+        for(var nodes of languageTree[i].children)
+        {
+          if(nodes.name == object.name)
+          {
+            $("#errorSubText").html("Bereits vorhanden.");
+            $("#addingSubNode").val("");
+            return;
+          }
+        }
         languageTree[i].children.push(object);
+        clearTree();
+        drawChildrenOf(getIdByName(toObj));
+        $("#addingSubNode").val("");
+        saveTree();
       }
       else
       {
         languageTree[i].children = [object];
+        clearTree();
+        drawChildrenOf(getIdByName(toObj));
+        $("#addingSubNode").val("");
+        saveTree();
       }
     }
   }
+}
+
+var getParentLanguage = function()
+{
+  var name = $('#header').html();
+  for(var i= 0; i < languageTree.length; i++)
+  {
+    if(languageTree[i].name == name)
+    {
+      return languageTree[i].language;
+    }
+  }
+  return -1;
 }
 
 var getSelectedAsText = function()
@@ -196,6 +236,19 @@ var getIdByName = function(name)
     }
   }
   return id;
+}
+
+var getSubIdByName = function(name)
+{
+  var id = getIdByName($('#header').html());
+  for(var i = 0; i < languageTree[id].children.length; i++)
+  {
+    if(name == languageTree[id].children[i].name)
+    {
+      return i;
+    }
+  }
+  return -1;
 }
 
 var clearTree = function()

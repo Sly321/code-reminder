@@ -48,13 +48,6 @@
 	border-radius: 0;
 }
 
-#selectable > li > .rounded {
-	border-bottom-left-radius: 5px;
-	border-top-left-radius: 5px;
-	border-bottom-right-radius: 5px;
-	border-top-right-radius: 5px;
-}
-
 /* First span after a list element:hover (the naming span) */
 #selectable > li > span:hover {
 	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
@@ -88,20 +81,12 @@
 	margin-right: 3px;
 }
 
-#editor {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-		min-height: 400px;
+#addBtn:hover  {
+	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  border: 1px solid rgba(81, 203, 238, 1);
 }
 
-#aceModal > .modal-dialog > .modal-content > .modal-body {
-	min-height: 400px;
-}
-
-#aceModal > .modal-dialog > .modal-content > .modal-footer {
-	padding: 0;
-	background-color: #2F3129;
+#removeBtn:hover {
+  box-shadow: 0 0 5px rgba(238, 81, 100, 1);
+  border: 1px solid rgba(238, 81, 100, 1);
 }
