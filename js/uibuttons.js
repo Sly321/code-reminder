@@ -41,10 +41,11 @@ $( "#removeBtn" ).click(function() {
 });
 
 $( '#addingText' ).keyup(function(e) {
-    if(e.keyCode == 13)
-    {
-        addToTreeBtn();
-    }
+  $("#errorText").html("");
+  if(e.keyCode == 13)
+  {
+      addToTreeBtn();
+  }
 });
 
 /* Modal */
