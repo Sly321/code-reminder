@@ -3,7 +3,7 @@
 
   "name": "Code Reminder",
   "description": "This extension will help you to manage your code snippets and code reminders.",
-  "version": "0.9.2",
+  "version": "1.0",
 
   "browser_action": {
     "default_icon": "icon.png",
@@ -14,5 +14,7 @@
   "permissions": [
     "activeTab",
     "storage"
-  ]
+  ],
+
+  "update-url": "https://github.com/Sly321/code-reminder/raw/master/update/update.xml"
 }
