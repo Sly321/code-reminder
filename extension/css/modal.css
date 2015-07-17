@@ -56,3 +56,17 @@
 	box-shadow: 0 0 5px rgba(238, 81, 100, 1);
   border: 1px solid rgba(238, 81, 100, 1);
 }
+
+/* Ace */
+.ace_scrollbar {
+    display: none !important;
+}
+
+.modal-footer {
+  border-color: #2F3129;
+}
+
+#aceOptions:hover {
+  box-shadow: 0 0 5px rgba(81, 238, 130, 1);
+  border: 1px solid rgba(81, 238, 130, 1);
+}
