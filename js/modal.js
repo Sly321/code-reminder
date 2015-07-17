@@ -17,7 +17,7 @@ function addSnippetEvent() {
 
     console.log("element: " + element);
     $('#aceModal').modal('show');
-    if(getParentLanguage().length > 0)
+    if(getParentLanguage().length != undefined)
     {
         editor.getSession().setMode("ace/mode/" + getParentLanguage());
     }

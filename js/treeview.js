@@ -267,9 +267,10 @@ function loadTree() {
       }
       else
       {
+        $('.rootInput').show();
+        $('.snippetInput').hide();
+        $('#header').html("Code Reminder");
         console.log("INFO: Can't load from Sync because there is no Date (initial opening)");
       }
     });
 }
-
-//loadTree();
