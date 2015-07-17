@@ -10,7 +10,13 @@ function addSnippetEvent() {
     var subId = getSubIdByName(element);
     var parId = getIdByName(parent);
     if(languageTree[parId].children[subId].snippet != undefined) {
-      editor.setValue(languageTree[parId].children[subId].snippet);
+      if(languageTree[parId].children[subId].snippet == "")
+      {
+        editor.setValue("");
+      } else {
+        editor.setValue(languageTree[parId].children[subId].snippet);
+      }
+
     } else {
       editor.setValue("");
     }

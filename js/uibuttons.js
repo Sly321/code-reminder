@@ -49,9 +49,12 @@ $( '#addingText' ).keyup(function(e) {
 });
 
 /* Modal */
-$( "#editBtn" ).click(function() {
+$( "#editBtn" ).click(function()
+{
   $('#saveLanguageBtn').off('click');
   $('#cancelLanguageButton').off('click');
+  $( '#nameInput' ).off('keyup');
+  $( '#languageInput' ).off('keyup');
   $('#myModal').modal('show');
   var selected = getSelectedId();
   var innerHtmlVar = "<span class='lrounded'>Name</span><input class='rrounded' id='nameInput' type='text' value='" + languageTree[selected].name + "'/><br>";
@@ -66,6 +69,20 @@ $( "#editBtn" ).click(function() {
   }
   $('#contentEditModalBody').html(innerHtmlVar);
   $('#contentEditModalBody2').html(innerHtmlVar2);
+
+  $( '#nameInput' ).keyup(function(e) {
+    if(e.keyCode == 13)
+    {
+      $('#saveLanguageBtn').trigger("click");
+    }
+  });
+
+  $( '#languageInput' ).keyup(function(e) {
+    if(e.keyCode == 13)
+    {
+      $('#saveLanguageBtn').trigger("click");
+    }
+  });
 
   $('#saveLanguageBtn').click(function() {
     languageTree[selected].name = $('#nameInput').val();

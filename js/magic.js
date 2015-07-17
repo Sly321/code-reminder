@@ -29,17 +29,35 @@ function addEvents() {
 }
 
 $(window).bind('keydown', function(event) {
-    if (event.ctrlKey || event.metaKey) {
-        switch (String.fromCharCode(event.which).toLowerCase()) {
-        case 's':
-            event.preventDefault();
-            if($('#aceModal').css("display") == "block")
-            {
-              $( "#aceSaveBtn" ).trigger("click");
-            }
-            break;
-        }
+  console.log(event.which);
+  if (event.ctrlKey || event.metaKey) {
+    switch (String.fromCharCode(event.which).toLowerCase()) {
+    case 's':
+      event.preventDefault();
+      if($('#aceModal').css("display") == "block")
+      {
+        $( "#aceSaveBtn" ).trigger("click");
+      }
+      else if($('#myModal').css("display") == "block")
+      {
+        $('#saveLanguageBtn').trigger("click");
+      }
+      break;
     }
+  }
+  switch(event.which)
+  {
+    case 27:
+      event.preventDefault();
+      if($('#aceModal').css("display") == "block")
+      {
+        $( "#aceCancelBtn" ).trigger("click");
+      }
+      else if($('#myModal').css("display") == "block")
+      {
+        $('#cancelLanguageButton').trigger("click");
+      }
+  }
 });
 
 loadTree();

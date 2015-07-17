@@ -90,3 +90,7 @@
   box-shadow: 0 0 5px rgba(238, 81, 100, 1);
   border: 1px solid rgba(238, 81, 100, 1);
 }
+#editBtn:hover {
+  box-shadow: 0 0 5px rgba(178, 238, 81, 1);
+  border: 1px solid rgba(178, 238, 81, 1);
+}
