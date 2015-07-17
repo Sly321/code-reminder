@@ -23,7 +23,7 @@
 }
 
 /* First span after a list element (the naming span) */
-#selectable > li > span:nth-child(1), #addingText {
+#selectable > li > .name, #addingText {
 	margin-right: 3px;
 	border-bottom-left-radius: 5px;
 	border-top-left-radius: 5px;
@@ -31,20 +31,39 @@
 }
 
 /* Second span after a list element (the arrow span) */
-#selectable > li > button:nth-child(2), #addBtn {
+#selectable > li > .lastSpan, #addBtn, .addChild, .openChildren {
+	border-bottom-right-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-left-radius: 0px;
+	border-top-left-radius: 0px;
+}
+
+#selectable > li > .frontSpan {
+	border-bottom-left-radius: 5px;
+	border-top-left-radius: 5px;
+	margin-right: 3px;
+}
+
+#selectable > li > .midSpan {
+	border-radius: 0;
+}
+
+#selectable > li > .rounded {
+	border-bottom-left-radius: 5px;
+	border-top-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 	border-top-right-radius: 5px;
 }
 
 /* First span after a list element:hover (the naming span) */
-#selectable > li > span:nth-child(1):hover {
+#selectable > li > span:hover {
 	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
   border: 1px solid rgba(81, 203, 238, 1);
 	cursor: pointer;
 }
 
 /* Second span after a list element:hover (the arrow span) */
-#selectable > li > button:nth-child(2):hover {
+#selectable > li > button:hover {
 	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
   border: 1px solid rgba(81, 203, 238, 1);
 	cursor: pointer;
@@ -67,4 +86,22 @@
 #removeBtn, #editBtn {
 	border-radius: 5px;
 	margin-right: 3px;
+}
+
+#editor {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+		min-height: 400px;
+}
+
+#aceModal > .modal-dialog > .modal-content > .modal-body {
+	min-height: 400px;
+}
+
+#aceModal > .modal-dialog > .modal-content > .modal-footer {
+	padding: 0;
+	background-color: #2F3129;
 }

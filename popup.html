@@ -10,6 +10,8 @@
     <script src="js/logger.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/jquery-ui.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="ace/ace.js"></script>
     <script src="js/storage.js"></script>
     <script src="js/treeview.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -19,14 +21,40 @@
     <link rel="stylesheet" href="css/global.css">
   </head>
   <body>
-    <h4>Code Reminder</h4>
+    <h4 id="header">Code Reminder</h4>
     <div>
       <ol id="selectable">
       </ol>
-      <input id='addingText' type='text'/><button id='addBtn'>Add</button>
-      <label id="errorText" style="color: red"></label><br>
-      <button id="removeBtn">Remove</button><button id="editBtn">Edit</button>
+      <div class="rootInput">
+        <input id='addingText' type='text'/><button id='addBtn'>Add</button>
+        <label id="errorText" style="color: red"></label><br>
+        <button id="removeBtn">Remove</button><button id="editBtn">Edit</button>
+      </div>
+      <div class="snippetInput">
+        <button id="backBtn">Back</button>
+      </div>
     </div>
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="aceModal" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div id="editor"></div>
+          </div>
+          <div class="modal-footer">
+            <button id="saveButton">Save</button><button id="cancelBtn">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </body>
   <script src="js/magic.js"></script>
 </html>

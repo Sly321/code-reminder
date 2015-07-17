@@ -2,4 +2,5 @@ body {
 	font-family: calibri, arial, monospace;
 	padding: 10px;
 	min-width: 300px;
+	min-height: 500px;
 }

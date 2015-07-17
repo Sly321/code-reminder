@@ -104,6 +104,23 @@ var removeFromTreeBtn = function()
   saveTree();
 }
 
+var drawChildrenOf = function(id)
+{
+  var ol = $("#selectable");
+  var li = "";
+  for (var splice of languageTree[id].children)
+  {
+    li += "<li class='ui-widget-content'>";
+    li += "<button class='snippet name rounded'>" + splice.name + "</button>";
+    li += "</li>";
+  }
+  $('.rootInput').hide();
+  $('.snippetInput').show();
+  $('#header').html(languageTree[id].name);
+  ol.append(li);
+  addSnippetEvent();
+}
+
 var drawTree = function()
 {
   var ol = $("#selectable");
@@ -117,11 +134,68 @@ var drawTree = function()
     }
     else
     {
-      li += "<button class='addChildren'>+</button>";
+      li += "<button class='addChild'>+</button>";
     }
     li += "</li>";
   }
+  $('.rootInput').show();
+  $('.snippetInput').hide();
+  $('#header').html("Code Reminder");
   ol.append(li);
+  addEvents();
+}
+
+var addSubTreeTo = function(toObj)
+{
+  var node = $("#addingSubNode").val();
+  var object = { 'name': node, 'snippet': "" };
+  for(var i= 0; i < languageTree.length; i++)
+  {
+    if(languageTree[i].name == toObj)
+    {
+      if(languageTree[i].children != undefined)
+      {
+        languageTree[i].children.push(object);
+      }
+      else
+      {
+        languageTree[i].children = [object];
+      }
+    }
+  }
+}
+
+var getSelectedAsText = function()
+{
+  var sel = $('.ui-selected > .name')[0].textContent;
+  return sel;
+}
+
+var getSelectedId = function()
+{
+  var sel = getSelectedAsText();
+  var id = -1;
+  for(var i= 0; i < languageTree.length; i++)
+  {
+    if(languageTree[i].name == sel)
+    {
+      id = i;
+    }
+  }
+  return id;
+}
+
+var getIdByName = function(name)
+{
+  var id = -1;
+  for(var i= 0; i < languageTree.length; i++)
+  {
+    if(languageTree[i].name == name)
+    {
+      id = i;
+    }
+  }
+  return id;
 }
 
 var clearTree = function()
@@ -136,6 +210,7 @@ function loadTree() {
       if(result.languageTree != undefined)
       {
         languageTree = result.languageTree;
+        drawTree();
       }
       else
       {
@@ -144,4 +219,4 @@ function loadTree() {
     });
 }
 
-loadTree();
+//loadTree();
