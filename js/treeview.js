@@ -159,34 +159,38 @@ var addSubToTree = function(toObj)
   var node = $("#addingSubNode").val();
   console.log("node "+ node);
   var object = { 'name': node, 'snippet': "" };
-  for(var i= 0; i < languageTree.length; i++)
-  {
-    if(languageTree[i].name == toObj)
+  if(node == "") {
+    $("#errorSubText").html("Nothing to Add");
+  } else {
+    for(var i= 0; i < languageTree.length; i++)
     {
-      if(languageTree[i].children != undefined)
+      if(languageTree[i].name == toObj)
       {
-        for(var nodes of languageTree[i].children)
+        if(languageTree[i].children != undefined)
         {
-          if(nodes.name == object.name)
+          for(var nodes of languageTree[i].children)
           {
-            $("#errorSubText").html("Bereits vorhanden.");
-            $("#addingSubNode").val("");
-            return;
+            if(nodes.name == object.name)
+            {
+              $("#errorSubText").html("Already exists.");
+              $("#addingSubNode").val("");
+              return;
+            }
           }
+          languageTree[i].children.push(object);
+          clearTree();
+          drawChildrenOf(getIdByName(toObj));
+          $("#addingSubNode").val("");
+          saveTree();
         }
-        languageTree[i].children.push(object);
-        clearTree();
-        drawChildrenOf(getIdByName(toObj));
-        $("#addingSubNode").val("");
-        saveTree();
-      }
-      else
-      {
-        languageTree[i].children = [object];
-        clearTree();
-        drawChildrenOf(getIdByName(toObj));
-        $("#addingSubNode").val("");
-        saveTree();
+        else
+        {
+          languageTree[i].children = [object];
+          clearTree();
+          drawChildrenOf(getIdByName(toObj));
+          $("#addingSubNode").val("");
+          saveTree();
+        }
       }
     }
   }
