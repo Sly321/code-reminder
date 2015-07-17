@@ -1,11 +1,17 @@
 Code Reminder
 =============
 
-Little Chrome Extension project for people like me, who can't get rid of their code snippets.
+Tiny Chrome Extension project for people like me, who can not get rid of their code snippets.
+
+Download crx: https://github.com/Sly321/code-reminder/raw/master/crx/extension.crx
 
 ## Features
-# Creating code languages nodes, code nodes and snippets
-# Saving on Ctrl+S in Editor (Ctrl + S is catched all the time)
+* Create code languages nodes, code nodes and snippets
+* Everything synced by the chrome account
+* Saving on Ctrl+S in Editor or in editing nodes (Ctrl+S is catched all the time)
+* Press Escape while editing the nodes or in the editor to cancel
+* Editor will highlight and help while editing
+* You can choose the language of all subnodes by editing the node and set language to one of the listed supportet languages
 
 # Supportet Languages by Ace Editor
 
