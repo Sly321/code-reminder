@@ -64,9 +64,14 @@ $('#aceOptions').click(function()
   $('#aceOptionsCancel').off("click");
   $('#aceOptionsModal').modal('show');
 
+  $('#widthInput').val($("body").width() + 20);
+  $('#heightInput').val($("body").height() + 20);
+  $('#widthInput').tooltip({'trigger':'focus', 'title': 'Minimum 300 maximum 800'});
+  $('#heightInput').tooltip({'trigger':'focus', 'title': 'Minimum 480 maximum 600'});
+
   $('#aceOptionsSave').click(function()
   {
-    if($('#cbLineNumbers').is(':checked'))
+    if($('#lineNumbersSel').find("option:selected").text() === "Yes")
     {
       options.linenumbers = true;
     }
@@ -74,6 +79,22 @@ $('#aceOptions').click(function()
     {
       options.linenumbers = false;
     }
+    var width = parseInt($('#widthInput').val());
+    if(Number.isInteger(width) && width >= 300 && width <= 800)
+    {
+      options.width = width;
+    } else {
+      $('#widthInput').val(options.width);
+    }
+
+    var height = parseInt($('#heightInput').val());
+    if(Number.isInteger(height) && height >= 480 && height <= 600)
+    {
+      options.height = height;
+    } else {
+      $('#heightInput').val(options.height);
+    }
+
     $('#aceOptionsModal').modal('hide');
     saveOptions();
     setOptions();
@@ -119,6 +140,18 @@ function setOptions()
     editor.renderer.setShowGutter(false);
     $('#cbLineNumbers').prop('checked', false);
   }
+
+  if(options.width === undefined || options.width === 0)
+  {
+    options.width = 300;
+  }
+
+  if(options.height === undefined || options.height === 0)
+  {
+    options.height = 500;
+  }
+  $("body").height(options.height - 20);
+  $("body").width(options.width - 20);
 }
 
 loadOptions();

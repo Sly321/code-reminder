@@ -6,14 +6,16 @@ body {
 }
 
 .std-ui {
-  padding: 5px;
+  	padding: 5px;
 	color: #c7c7c7;
 	border: 1px #ccc solid;
 	background: #fff;
+	min-width: 60px;
 }
 
 .flori {
 	float: right;
+	flex-grow: 1;
 }
 
 .marle {

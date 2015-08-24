@@ -144,7 +144,7 @@ var drawTree = function()
   for (var splice of languageTree)
   {
     li += "<li class='ui-widget-content'><span class='name'>" + splice.name + "</span>";
-    li += "<button class='openChildren'>&gt;</button>";
+    li += "<button class='openChildren'>&#8594;</button>";
     li += "</li>";
   }
   $('.rootInput').show();
@@ -204,6 +204,19 @@ var getParentLanguage = function()
     if(languageTree[i].name == name)
     {
       return languageTree[i].language;
+    }
+  }
+  return -1;
+}
+
+var getParentId = function()
+{
+  var name = $('#header').html();
+  for(var i= 0; i < languageTree.length; i++)
+  {
+    if(languageTree[i].name == name)
+    {
+      return i;
     }
   }
   return -1;
@@ -277,4 +290,45 @@ function loadTree() {
         console.log("INFO: Can't load from Sync because there is no Date (initial opening)");
       }
     });
+}
+
+var sort_by = function(field, reverse, primer){
+
+   var key = primer ? 
+       function(x) {return primer(x[field])} : 
+       function(x) {return x[field]};
+
+   reverse = !reverse ? 1 : -1;
+
+   return function (a, b) {
+       return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
+     } 
+}
+
+var sortSubTreeAlpha = function() {
+  languageTree[getParentId()].children.sort(sort_by("name", false, function(a) {return a.toUpperCase()}));
+  clearTree();
+  drawChildrenOf(getParentId());
+  saveTree();
+}
+
+var sortTreeAlpha = function() {
+  languageTree.sort(sort_by("name", false, function(a) {return a.toUpperCase()}));
+  clearTree();
+  drawTree();
+  saveTree();
+}
+
+var sortSubTreeAlphaRev = function() {
+  languageTree[getParentId()].children.sort(sort_by("name", true, function(a) {return a.toUpperCase()}));
+  clearTree();
+  drawChildrenOf(getParentId());
+  saveTree();
+}
+
+var sortTreeAlphaRev = function() {
+  languageTree.sort(sort_by("name", true, function(a) {return a.toUpperCase()}));
+  clearTree();
+  drawTree();
+  saveTree();
 }

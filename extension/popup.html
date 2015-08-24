@@ -30,7 +30,10 @@
       <div class="rootInput">
         <input id='addingText' type='text'/><button id='addBtn'>Add</button>
         <label id="errorText" style="color: red"></label><br>
-        <button class="lrounded marri" id="removeBtn">Remove</button><button class="rrounded" id="editBtn">Edit</button>
+        <button class="lrounded" id="removeBtn">Remove</button>
+        <button id="editBtn">Edit</button>
+        <button id="sortAToZ">A &#8594; Z</button>
+        <button class="rrounded" id="sortZToA">Z &#8594; A</button>
       </div>
       <div class="snippetInput">
         <input class="std-ui lrounded" id='addingSubNode' type='text'/><button class="std-ui rrounded marle" id='addSubBtn'>Add</button>
@@ -81,8 +84,17 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div id="aceOptionsBody" class="modal-body">
-            <span class=".std-ui lrounded">Show Line Numbers</span><input class="std-ui rrounded flori" id="cbLineNumbers" type="checkbox"/>
+            <div id="aceOptionsBodyWidth1">
+              <span class="std-ui lrounded marri">Show Line Numbers</span><select id="lineNumbersSel" class="std-ui rrounded flori"><option>Yes</option><option>No</option></select>
+            </div>
+            <div id="aceOptionsBodyWidth2">
+              <span class="std-ui lrounded marri">Width</span><input class="std-ui rrounded flori" id="widthInput" type="text"/>
+            </div>
+            <div id="aceOptionsBodyWidth2">
+              <span class="std-ui lrounded marri">Height</span><input class="std-ui rrounded flori" id="heightInput" type="text"/>
+            </div>
           </div>
+          
           <div class="modal-footer">
             <button class='lrounded marri' id="aceOptionsSave">Save</button><button class='rrounded' id="aceOptionsCancel">Cancel</button>
           </div>

@@ -70,3 +70,16 @@
   box-shadow: 0 0 5px rgba(81, 238, 130, 1);
   border: 1px solid rgba(81, 238, 130, 1);
 }
+
+#editModalBody > div > select {
+  padding: 5px;
+  color: #c7c7c7;
+  border: 1px #ccc solid;
+  background: #fff;
+  flex-grow: 1;
+}
+
+#aceOptionsBody > div {
+  display: flex;
+  margin-bottom: 3px;
+}

@@ -76,11 +76,6 @@
 	margin-top: 3px;
 }
 
-#removeBtn, #editBtn {
-	border-radius: 5px;
-	margin-right: 3px;
-}
-
 #addBtn:hover  {
 	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
   border: 1px solid rgba(81, 203, 238, 1);
@@ -90,7 +85,18 @@
   box-shadow: 0 0 5px rgba(238, 81, 100, 1);
   border: 1px solid rgba(238, 81, 100, 1);
 }
+
 #editBtn:hover {
+  box-shadow: 0 0 5px rgba(178, 238, 81, 1);
+  border: 1px solid rgba(178, 238, 81, 1);
+}
+
+#sortZToA:hover {
+  box-shadow: 0 0 5px rgba(178, 238, 81, 1);
+  border: 1px solid rgba(178, 238, 81, 1);
+}
+
+#sortAToZ:hover {
   box-shadow: 0 0 5px rgba(178, 238, 81, 1);
   border: 1px solid rgba(178, 238, 81, 1);
 }
