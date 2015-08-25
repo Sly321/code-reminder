@@ -18,29 +18,42 @@
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/jquery-ui.min.css">
     <link rel="stylesheet" href="css/treeview.css">
-    <link rel="stylesheet" href="css/subTree.css">
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/modal.css">
   </head>
   <body>
-    <h4 id="header">Code Reminder</h4>
+    <div class="std-ui-con">
+      <h4 id="header" style="float: left">Code Reminder</h4>
+      <div class="" id="preferences"><img src="img/gear.png"/></div>
+    </div>
     <div>
       <ol id="selectable">
       </ol>
-      <div class="rootInput">
-        <input id='addingText' type='text'/><button id='addBtn'>Add</button>
-        <label id="errorText" style="color: red"></label><br>
-        <button class="lrounded" id="removeBtn">Remove</button>
-        <button id="editBtn">Edit</button>
-        <button id="sortAToZ">A &#8594; Z</button>
-        <button class="rrounded" id="sortZToA">Z &#8594; A</button>
+      <div class="std-ui-con rootInput">
+        <input class="std-ui lrounded flole" id='addingText' type='text'/>
+        <div class="std-ui rrounded glow-red flole" id='addBtn'>Add</div>
+        <label id="errorText" style="color: red"></label>
       </div>
-      <div class="snippetInput">
-        <input class="std-ui lrounded" id='addingSubNode' type='text'/><button class="std-ui rrounded marle" id='addSubBtn'>Add</button>
-        <label id="errorSubText" style="color: red"></label><br>
-        <button class="rounded" id="backBtn">Back</button>
+      <div class="snippetInput std-ui-con">
+        <div class="std-ui-con">
+          <input class="std-ui lrounded flole" id='addingSubNode' type='text'/>
+          <div class="std-ui-btn glow-blue flole" id='addSubBtn'>Add</div>
+          <div class="std-ui-btn-right glow-blue flole" id="backBtn">Back</div>
+          <label id="errorSubText" style="color: red"></label>
+        </div>
+        <div class="std-ui-con">
+          <div class="std-ui-btn-left glow-blue flole" id="sortSubAToZ">A &#8594; Z</div>
+          <div class="std-ui-btn-right glow-blue flole" id="sortSubZToA">Z &#8594; A</div>
+        </div>
+      </div>
+      <div class="std-ui-con rootInput">
+        <div class="std-ui-btn-left glow-red flole" id="removeBtn">Remove</div>
+        <div class="std-ui-btn glow-blue flole" id="editBtn">Edit</div>
+        <div class="std-ui-btn glow-blue flole" id="sortAToZ">A &#8594; Z</div>
+        <div class="std-ui-btn-right glow-blue flole" id="sortZToA">Z &#8594; A</div>
       </div>
     </div>
+    <!-- EDIT LANGUAGE MODAL !-->
     <div class="modal fade" id="myModal" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -51,11 +64,13 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button class='lrounded' id='saveLanguageBtn'>Save</button><button class='rrounded' id='cancelLanguageButton'>Cancel</button>
+            <button class='std-ui-btn-left glow-blue' id='saveLanguageBtn'>Save</button>
+            <button class='std-ui-btn-right glow-red' id='cancelLanguageButton'>Cancel</button>
           </div>
         </div>
       </div>
     </div>
+    <!-- EDITOR ACE MODAL !-->
     <div class="modal fade" id="aceModal" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -63,11 +78,15 @@
             <div id="editor"></div>
           </div>
           <div class="modal-footer">
-            <button class='lrounded marri' id="removeSubBtn">Remove</button><button class="marri" id="aceOptions">Options</button><button id="aceSaveBtn">Save</button><button class='rrounded' id="aceCancelBtn">Cancel</button>
+            <div class='std-ui-btn-right flori glow-red' id="aceCancelBtn">Cancel</div>
+            <div class="std-ui-btn flori glow-blue" id="aceSaveBtn">Save</div>
+            <div class="std-ui-btn flori glow-blue" id="aceOptions">Options</div>
+            <div class='std-ui-btn-left flori glow-red' id="removeSubBtn">Remove</div>
           </div>
         </div>
       </div>
     </div>
+    <!-- YES NO MODAL !-->
     <div class="modal fade" id="yesNoModal" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -75,35 +94,63 @@
             Really want to Remove?
           </div>
           <div class="modal-footer">
-            <button class='lrounded' id="modalYes">Yes</button><button class='rrounded' id="modalNo">No</button>
+             <div class='std-ui-btn-right flori glow-blue' id="modalYes">Yes</div>
+             <div class='std-ui-btn-left flori glow-red' id="modalNo">No</div>
           </div>
         </div>
       </div>
     </div>
+    <!-- ACE MODAL OPTIONS !-->
     <div class="modal fade" id="aceOptionsModal" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
           <div id="aceOptionsBody" class="modal-body">
             <div id="aceOptionsBodyWidth1">
-              <span class="std-ui lrounded marri">Show Line Numbers</span><select id="lineNumbersSel" class="std-ui rrounded flori"><option>Yes</option><option>No</option></select>
-            </div>
-            <div id="aceOptionsBodyWidth2">
-              <span class="std-ui lrounded marri">Width</span><input class="std-ui rrounded flori" id="widthInput" type="text"/>
-            </div>
-            <div id="aceOptionsBodyWidth2">
-              <span class="std-ui lrounded marri">Height</span><input class="std-ui rrounded flori" id="heightInput" type="text"/>
+              <span class="std-ui lrounded marri">Show Line Numbers</span>
+              <select id="lineNumbersSel" class="std-ui rrounded flori">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
             </div>
           </div>
-          
           <div class="modal-footer">
-            <button class='lrounded marri' id="aceOptionsSave">Save</button><button class='rrounded' id="aceOptionsCancel">Cancel</button>
+            <div class='std-ui-btn-right flori glow-blue' id="aceOptionsSave">Save</div>
+            <div class='std-ui-btn-left flori glow-red' id="aceOptionsCancel">Cancel</div>
           </div>
         </div>
       </div>
     </div>
-
+    <!-- PREFERENCES MODAL !-->
+    <div class="modal fade" id="preferencesModal" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div id="preferencesModalBody" class="modal-body">
+            <div class="std-ui-con">
+              <div class="std-ui-left-min">Ask before remove</div>
+              <select id="askBeforeRemoveSel" class="std-ui-right-selector">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+            <div class="std-ui-con">
+              <div class="std-ui-left-min">Width</div>
+              <input class="std-ui-right" id="widthInput" type="text"/>
+            </div>
+            <div class="std-ui-con">
+              <div class="std-ui-left-min ">Height</div>
+              <input class="std-ui-right" id="heightInput" type="text"/>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class='std-ui-btn-right flori glow-blue' id='savePreferences'>Save</div>
+            <div class='std-ui-btn-left flori glow-red' id='cancelPreferences'>Cancel</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
   <script src="js/uibuttons.js"></script>
   <script src="js/modal.js"></script>
+  <script src="js/preferences.js"></script>
   <script src="js/magic.js"></script>
 </html>

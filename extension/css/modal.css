@@ -1,20 +1,5 @@
 /* Edit Modal */
 
-#saveLanguageBtn {
-  margin-right: 3px;
-}
-
-#saveLanguageBtn:hover {
-	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
-  border: 1px solid rgba(81, 203, 238, 1);
-}
-
-
-#cancelLanguageButton:hover {
-	box-shadow: 0 0 5px rgba(238, 81, 100, 1);
-  border: 1px solid rgba(238, 81, 100, 1);
-}
-
 #editModalBody > div {
   display: flex;
   margin-bottom: 3px;
@@ -28,11 +13,6 @@
   flex-grow: 1;
 }
 
-#editModalBody > div > input:hover {
-  box-shadow: 0 0 5px rgba(81, 238, 130, 1);
-  border: 1px solid rgba(81, 238, 130, 1);
-}
-
 #editModalBody > div > span {
   padding: 5px;
 	color: #c7c7c7;
@@ -42,33 +22,9 @@
   margin-right: 3px;
 }
 
-/* Remove Modal */
-#modalYes {
-  margin-right: 3px;
-}
-
-#modalYes:hover {
-	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
-  border: 1px solid rgba(81, 203, 238, 1);
-}
-
-#modalNo:hover {
-	box-shadow: 0 0 5px rgba(238, 81, 100, 1);
-  border: 1px solid rgba(238, 81, 100, 1);
-}
-
 /* Ace */
 .ace_scrollbar {
     display: none !important;
-}
-
-.modal-footer {
-  border-color: #2F3129;
-}
-
-#aceOptions:hover {
-  box-shadow: 0 0 5px rgba(81, 238, 130, 1);
-  border: 1px solid rgba(81, 238, 130, 1);
 }
 
 #editModalBody > div > select {
