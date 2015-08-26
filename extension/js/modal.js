@@ -5,6 +5,27 @@ var options = {
   'linenumbers': true
 };
 
+function removeSubNode(element) {
+  $('#modalNo').off("click");
+  $('#modalYes').off("click");
+  if (preferences.askbeforremove) {
+    $('#yesNoModal').modal('show');
+    $('#yesNoModalBody').html("Delete " + element + "?");
+
+    $('#modalYes').click(function() {
+      removeSubFromTree(element);
+      $('#yesNoModal').modal('hide');
+      $('#aceModal').modal('hide');
+    });
+    $('#modalNo').click(function() {
+      $('#yesNoModal').modal('hide');
+    });
+  } else if (!preferences.askbeforremove) {
+    removeSubFromTree(element);
+    $('#aceModal').modal('hide');
+  }
+}
+
 function addSnippetEvent() {
   $('.snippet:not([data-event-added])').attr("data-event-added", "1").click(function() {
     $("#removeSubBtn").off("click");
@@ -29,24 +50,7 @@ function addSnippetEvent() {
     }
 
     $("#removeSubBtn").click(function() {
-      $('#modalNo').off("click");
-      $('#modalYes').off("click");
-      if (preferences.askbeforremove) {
-        $('#yesNoModal').modal('show');
-        $('#yesNoModalBody').html("Delete " + element + "?");
-
-        $('#modalYes').click(function() {
-          removeSubFromTree(element);
-          $('#yesNoModal').modal('hide');
-          $('#aceModal').modal('hide');
-        });
-        $('#modalNo').click(function() {
-          $('#yesNoModal').modal('hide');
-        });
-      } else if (!preferences.askbeforremove) {
-        removeSubFromTree(element);
-        $('#aceModal').modal('hide');
-      }
+      removeSubNode(element);
     });
 
     $("#aceSaveBtn").click(function() {

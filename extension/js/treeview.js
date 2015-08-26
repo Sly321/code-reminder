@@ -203,10 +203,23 @@ var getSelectedId = function() {
   for (var i = 0; i < languageTree.length; i++) {
     if (languageTree[i].name == sel) {
       id = i;
+      return id;
     }
   }
   return id;
 };
+
+var getSelectedSubId = function() {
+  var sel = getSelectedAsText();
+  var id = -1;
+  for (var i = 0; i < languageTree[getParentId()].children.length; i++) {
+    if (languageTree[getParentId()].children[i].name == sel) {
+      id = i;
+      return id;
+    }
+  }
+  return id;
+}
 
 var getIdByName = function(name) {
   var id = -1;
